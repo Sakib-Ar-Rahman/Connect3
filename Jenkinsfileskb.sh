@@ -7,21 +7,21 @@ node {
         checkout scm
         sh '''
 
-        echo 'Checking out gradle wrapper'
+        # echo 'Checking out gradle wrapper'
 
-        git checkout gradle
+        # git checkout gradle
 
-        # enabling 'Jenkins' mode in gradle:
-        sed -i -e 's/def automatedBuild *= *false/def automatedBuild = true/g' build.gradle
+        # # enabling 'Jenkins' mode in gradle:
+        # sed -i -e 's/def automatedBuild *= *false/def automatedBuild = true/g' build.gradle
 
         
         
 
-        ./gradlew wrapper # in case someone updates the build-tools
-        echo 'Building...'
-        pwd
-        ./gradlew clean
-        ./gradlew assemble
+        # ./gradlew wrapper # in case someone updates the build-tools
+        # echo 'Building...'
+        # pwd
+        # ./gradlew clean
+        # ./gradlew assemble
 
 
 
