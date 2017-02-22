@@ -1,25 +1,40 @@
 #!groovy
 
 // Android Jenkinsfile
-// Jenkins CI
-pipeline {
-    agent any
 
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
+node {
+    stage('Build') {
+        echo 'Building....'
+    }
+    stage('Test') {
+    	echo 'Building....'
+
+        checkout scm
+  		sh '''
+
+	    echo 'Checking out gradle wrapper'
+	    cd ugomobilewallet
+	    git checkout gradle
+
+	    # enabling 'Jenkins' mode in gradle:
+	    sed -i -e 's/def automatedBuild *= *false/def automatedBuild = true/g' build.gradle
+
+	    
+	    
+
+	    ./gradlew wrapper # in case someone updates the build-tools
+	    echo 'Building...'
+	    pwd
+	    ./gradlew clean
+        ./gradlew assemble
+
+
+
+        '''
+
+
+    }
+    stage('Deploy') {
+        echo 'Deploying....'
     }
 }
