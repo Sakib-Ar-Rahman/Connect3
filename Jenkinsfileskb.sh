@@ -4,7 +4,6 @@
 
 stage 'Get_External_Shell_Scripts'
 node {
-
     try{
         stage('Build') {
             checkout scm
@@ -12,7 +11,7 @@ node {
             sh '''
             echo 'Checking out gradle wrapper'
             # cd tictactoe
-            git checkout gradle
+            # git checkout gradle
 
             # enabling 'Jenkins' mode in gradle:
             sed -i -e 's/def automatedBuild *= *false/def automatedBuild = true/g' build.gradle
