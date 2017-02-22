@@ -55,5 +55,6 @@ node {
       currentBuild.result = "FAILED"
       throw e
     }
+}
 
 }
