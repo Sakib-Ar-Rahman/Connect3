@@ -11,7 +11,7 @@ node {
             
             sh '''
             echo 'Checking out gradle wrapper'
-            cd tictactoe
+            # cd tictactoe
             git checkout gradle
 
             # enabling 'Jenkins' mode in gradle:
