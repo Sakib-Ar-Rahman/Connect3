@@ -13,7 +13,7 @@ node {
   		sh '''
 
 	    echo 'Checking out gradle wrapper'
-	    cd ugomobilewallet
+
 	    git checkout gradle
 
 	    # enabling 'Jenkins' mode in gradle:
