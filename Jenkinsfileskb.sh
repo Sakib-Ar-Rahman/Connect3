@@ -14,7 +14,7 @@ node {
             # git checkout gradle
 
             # enabling 'Jenkins' mode in gradle:
-            sed -i -e 's/def automatedBuild *= *false/def automatedBuild = true/g' build.gradle
+            # sed -i -e 's/def automatedBuild *= *false/def automatedBuild = true/g' build.gradle
 
             ./gradlew wrapper # in case someone updates the build-tools
             echo 'Building...'
