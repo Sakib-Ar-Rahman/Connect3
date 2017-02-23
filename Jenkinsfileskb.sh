@@ -8,24 +8,25 @@ node {
     try{
         stage('Build') {
             checkout scm
+            echo 'Building....'
             
-            sh '''
-            echo 'Checking out gradle wrapper'
-            # cd tictactoe
-            # git checkout gradle
+            // sh '''
+            // echo 'Checking out gradle wrapper'
+            // # cd tictactoe
+            // # git checkout gradle
 
-            # enabling 'Jenkins' mode in gradle:
-            # sed -i -e 's/def automatedBuild *= *false/def automatedBuild = true/g' build.gradle
+            // # enabling 'Jenkins' mode in gradle:
+            // # sed -i -e 's/def automatedBuild *= *false/def automatedBuild = true/g' build.gradle
 
-            ./gradlew wrapper # in case someone updates the build-tools
-            echo 'Building...'
-            pwd
-            ./gradlew clean
-            ./gradlew assemble
+            // ./gradlew wrapper # in case someone updates the build-tools
+            // echo 'Building...'
+            // pwd
+            // ./gradlew clean
+            // ./gradlew assemble
 
 
 
-            '''
+            // '''
         }
         stage('Test') {
         	echo 'Testing....'
@@ -44,10 +45,10 @@ node {
 
 
             //Sandbox, can fail job depending on Veracode upload
-            veracode applicationName: 'UGO - UGO Digital Wallet - Android', canFailJob: true, createSandbox: true, criticality: 'VeryHigh', fileNamePattern: '', pHost: '', pPassword: '', pUser: '', replacementPattern: '', sandboxName: 'Sandbox Testing Sakib', scanExcludesPattern: '', scanIncludesPattern: '', scanName: 'Build-$buildnumber-Time-$timestamp', uploadExcludesPattern: '', uploadIncludesPattern: '**/**.jar, **/**.apk', useIDkey: true, vid: '19705c94f457345b9b9a809015525fcb', vkey: '7dd5d6f7c35d9cab66eaf4ee40c93a0ebf26b60ba505fadedf78c64452cd7d914ddd4e231e098a2bf64f70244750a62c58c3318bc5f5226186dd71fcedda4620', vpassword: '', vuser: ''
+            // veracode applicationName: 'UGO - UGO Digital Wallet - Android', canFailJob: true, createSandbox: true, criticality: 'VeryHigh', fileNamePattern: '', pHost: '', pPassword: '', pUser: '', replacementPattern: '', sandboxName: 'Sandbox Testing Sakib', scanExcludesPattern: '', scanIncludesPattern: '', scanName: 'Build-$buildnumber-Time-$timestamp', uploadExcludesPattern: '', uploadIncludesPattern: '**/**.jar, **/**.apk', useIDkey: true, vid: '19705c94f457345b9b9a809015525fcb', vkey: '7dd5d6f7c35d9cab66eaf4ee40c93a0ebf26b60ba505fadedf78c64452cd7d914ddd4e231e098a2bf64f70244750a62c58c3318bc5f5226186dd71fcedda4620', vpassword: '', vuser: ''
 
-
-
+            //Sandbox, can fail job, wait for scan to finish
+            veracode applicationName: 'UGO - UGO Digital Wallet - Android', criticality: 'VeryHigh', debug: true, fileNamePattern: '', pHost: '', pPassword: '', pUser: '', replacementPattern: '', sandboxName: 'Sandbox Testing Sakib', scanExcludesPattern: '', scanIncludesPattern: '', scanName: 'Build-$buildnumber-Time-$timestamp', uploadExcludesPattern: '', uploadIncludesPattern: '**/**.jar, **/**.apk', useIDkey: true, vid: '19705c94f457345b9b9a809015525fcb', vkey: '7dd5d6f7c35d9cab66eaf4ee40c93a0ebf26b60ba505fadedf78c64452cd7d914ddd4e231e098a2bf64f70244750a62c58c3318bc5f5226186dd71fcedda4620', vpassword: '', vuser: ''
 
             //Sandbox, no wait for scan
             // veracode applicationName: 'UGO - UGO Digital Wallet - Android', createSandbox: true, criticality: 'VeryHigh', fileNamePattern: '', pHost: '', pPassword: '', pUser: '', replacementPattern: '', sandboxName: 'Sandbox Testing Sakib', scanExcludesPattern: '', scanIncludesPattern: '', scanName: 'Build-$buildnumber-Time-$timestamp', uploadExcludesPattern: '', uploadIncludesPattern: '**/**.jar, **/**.apk', useIDkey: true, vid: '19705c94f457345b9b9a809015525fcb', vkey: '7dd5d6f7c35d9cab66eaf4ee40c93a0ebf26b60ba505fadedf78c64452cd7d914ddd4e231e098a2bf64f70244750a62c58c3318bc5f5226186dd71fcedda4620', vpassword: '', vuser: ''
