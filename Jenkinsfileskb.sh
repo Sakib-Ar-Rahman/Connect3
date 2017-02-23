@@ -5,7 +5,6 @@
 stage 'Get_External_Shell_Scripts'
 node {
 
-    withCredentials([usernameColonPassword(credentialsId: 'mylogin', variable: 'USERPASS')]) {
     try{
         stage('Build') {
             checkout scm
@@ -51,5 +50,5 @@ node {
       currentBuild.result = "FAILED"
       throw e
     }
-}
+
 }
