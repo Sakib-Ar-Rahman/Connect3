@@ -1,5 +1,3 @@
-#!groovy
-
 // Android Jenkinsfile
 
 stage 'Get_External_Shell_Scripts'
