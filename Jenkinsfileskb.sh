@@ -24,12 +24,11 @@ node {
             // ./gradlew clean
             // ./gradlew assemble
 
-
-
             // '''
         }
         stage('Test') {
         	echo 'Testing....'
+
 
             
 
@@ -37,6 +36,7 @@ node {
         }
         stage('Deploy') {
             echo 'Deploying....'
+            echo 'some change'
         }
 
 
