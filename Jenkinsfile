@@ -7,6 +7,8 @@ node {
         stage('Build') {
             checkout scm
             echo 'Building....'
+		
+// Delete later
             
             // sh '''
             // echo 'Checking out gradle wrapper'
