@@ -45,7 +45,7 @@ node {
 
             echo 'Setting name of file'
             
-            
+            sh '''
 
             if [ -z "$BRANCH_NAME" ]; then
                 BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
@@ -54,7 +54,7 @@ node {
                 do NEWFILENAME=$FILENAME"_"$BRANCH_NAME
             done
 
-            
+            '''
 
 
 
