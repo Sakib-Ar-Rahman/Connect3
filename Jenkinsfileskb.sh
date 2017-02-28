@@ -41,8 +41,9 @@ node {
 
 
         stage('Send to Veracode'){
-            
-        echo $BRANCH_NAME
+
+            echo 'Naming branch...'
+            echo $BRANCH_NAME
 
 
             
