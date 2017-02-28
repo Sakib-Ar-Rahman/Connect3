@@ -44,6 +44,7 @@ node {
             echo 'Send to Veracode...'
 
             echo 'Setting name of file'
+            String NEWFILENAME="test"
             sh '''
 
             if [ -z "$BRANCH_NAME" ]; then
@@ -53,10 +54,14 @@ node {
                 do NEWFILENAME=$FILENAME"_"$BRANCH_NAME
             done
 
+            echo $NEWFILENAME
+
 
             '''
+            echo $BRANCH_NAME
+            echo $NEWFILENAME
 
-            echo $FILENAME
+            
 
 
 
