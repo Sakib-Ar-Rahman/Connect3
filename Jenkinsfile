@@ -45,19 +45,20 @@ node {
 
         stage('Send to Veracode'){
             echo 'Send to Veracode...'
+            echo 'Naming branch...'
+            echo $BRANCH_NAME
+            // echo 'Setting name of file'
+            // sh '''
 
-            echo 'Setting name of file'
-            sh '''
-
-            if [ -z "$BRANCH_NAME" ]; then
-                BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
-            fi
-            for FILENAME in ugomobilewallet/build/outputs/apk/*.apk
-                do NEWFILENAME=$FILENAME"_"$BRANCH_NAME
-            done
+            // if [ -z "$BRANCH_NAME" ]; then
+            //     BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+            // fi
+            // for FILENAME in ugomobilewallet/build/outputs/apk/*.apk
+            //     do NEWFILENAME=$FILENAME"_"$BRANCH_NAME
+            // done
 
 
-            '''
+            // '''
 
             echo $FILENAME
 
