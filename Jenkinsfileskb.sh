@@ -45,7 +45,7 @@ node {
         echo $BRANCH_NAME
 
 
-            '''
+            
             echo $BRANCH_NAME
             echo $NEWFILENAME
 
