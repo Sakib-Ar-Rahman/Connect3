@@ -1,4 +1,3 @@
-#!groovy
 // Android Jenkinsfile
 
 stage 'Get_External_Shell_Scripts'
@@ -6,7 +5,7 @@ node {
 
     try{
         stage('Build') {
-            checkout scm
+            
             echo 'Building....'
 		
 // Delete later
