@@ -90,7 +90,7 @@ node {
                     env.FLAG = readFile 'scan.txt'
 
             }
-            echo ${env.FLAG}
+            echo "${env.FLAG}"
 
             if (false){
                 echo 'False reached'
