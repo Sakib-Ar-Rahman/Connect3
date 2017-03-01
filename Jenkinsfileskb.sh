@@ -37,6 +37,8 @@ node {
         stage('Deploy') {
             echo 'Deploying....'
             echo 'some more changes'
+            echo $BUILD_NUMBER
+            echo $BRANCH_NAME
         }
 
 
