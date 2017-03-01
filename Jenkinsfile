@@ -84,7 +84,7 @@ node {
 
                     echo 'Reading Scan File'
                     env.FLAG = readFile 'scan.txt'
-                    echo "Scan file output: " $env.FLAG
+                    echo readFile 'scan.txt'
             }
 
             if (false){
