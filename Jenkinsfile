@@ -55,8 +55,11 @@ node {
             if [ -z "$BRANCH_NAME" ]; then
                 BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
             fi
-            for FILENAME in ticactoe/*.apk
-                do NEWFILENAME=$FILENAME"_"$BRANCH_NAME
+            for FILENAME in tictactoe/*.apk
+                PATHNAME="tictactoe/"
+                do FILEPATHNAME=$FILENAME"_"$BRANCH_NAME
+                echo "$FILEPATHNAME" | grep -oP "^$PATHNAME\K.*"
+
             done
 
 
