@@ -26,7 +26,7 @@ node {
             // ./gradlew assemble
 
             // '''
-        }
+        
         stage('Test') {
         	echo 'Testing....'
 
@@ -81,3 +81,4 @@ node {
     }
 
 }
+
