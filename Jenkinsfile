@@ -48,8 +48,7 @@ node {
             echo 'Naming branch...'
             // echo $BUILD_ID
             
-            sh '''
-            echo $BUILD_ID
+            sh '''echo $BUILD_ID
             echo $BRANCH_NAME
 
             if [ -z "$BRANCH_NAME" ]; then
@@ -60,10 +59,7 @@ node {
                 do FILEPATHNAME=$FILENAME"_"$BRANCH_NAME
                 FILENAME=${FILEPATHNAME#$PATHNAME}
                 echo $FILENAME
-
             done
-
-
             '''
 
             
