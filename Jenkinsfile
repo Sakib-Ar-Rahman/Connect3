@@ -51,8 +51,8 @@ node {
                 BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
             fi
             for FILENAME in tictactoe/*.apk
-                PATHNAME=tictactoe/
-                do FILEPATHNAME=$FILENAME"_"$BRANCH_NAME
+                do PATHNAME=tictactoe/
+                FILEPATHNAME=$FILENAME"_"$BRANCH_NAME
                 FILENAME=${FILEPATHNAME#$PATHNAME}
                 echo $FILENAME
             done
