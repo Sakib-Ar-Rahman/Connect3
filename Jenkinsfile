@@ -2,12 +2,11 @@
 
 // Android Jenkinsfile
 
-stage 'Get_External_Shell_Scripts'
 node {
 
     try{
         stage('Build') {
-            checkout scm
+            // checkout scm
             echo 'Building....'
             
             // sh '''
@@ -45,23 +44,23 @@ node {
 
         
             
-            sh '''
-            echo 'Existing Branch name'
-            echo ${env.BUILD_ID}
+            // sh '''
+            // echo 'Existing Branch name'
+            // echo ${env.BUILD_ID}
 
-            if [ -z "$BRANCH_NAME" ]; then
-                BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
-            fi
-            for FILENAME in tictactoe/*.apk
-                do NEWFILENAME=$FILENAME"_"$BRANCH_NAME
-            done
-            echo $BRANCH_NAME
-            echo $NEWFILENAME
+            // if [ -z "$BRANCH_NAME" ]; then
+            //     BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+            // fi
+            // for FILENAME in tictactoe/*.apk
+            //     do NEWFILENAME=$FILENAME"_"$BRANCH_NAME
+            // done
+            // echo $BRANCH_NAME
+            // echo $NEWFILENAME
 
 
-            '''
+            // '''
 
-            echo "$pwd"
+            // echo "$pwd"
 
 
 
