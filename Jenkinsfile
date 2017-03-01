@@ -47,9 +47,10 @@ node {
             echo 'Send to Veracode...'
             echo 'Naming branch...'
             // echo $BUILD_ID
-            echo $env.BUILD_ID
-            // echo 'Setting name of file'
-            // sh '''
+            
+            sh '''
+            echo $BUILD_ID
+            '''
 
             // if [ -z "$BRANCH_NAME" ]; then
             //     BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
