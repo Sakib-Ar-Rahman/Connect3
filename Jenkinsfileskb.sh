@@ -47,15 +47,15 @@ node {
             echo 'Setting name of file'
             
             sh '''
-
+            checkout scm
             if [ -z "$BRANCH_NAME" ]; then
                 BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
             fi
             for FILENAME in build/outputs/apk/*.apk
                 do NEWFILENAME=$FILENAME"_"$BRANCH_NAME
             done
-            echo BRANCH_NAME
-            echo NEWFILENAME
+            echo $BRANCH_NAME
+            echo $NEWFILENAME
 
 
             '''
