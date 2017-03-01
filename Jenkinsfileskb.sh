@@ -53,7 +53,7 @@ node {
             if [ -z "$BRANCH_NAME" ]; then
                 BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
             fi
-            for FILENAME in build/outputs/apk/*.apk
+            for FILENAME in tictactoe/*.apk
                 do NEWFILENAME=$FILENAME"_"$BRANCH_NAME
             done
             echo $BRANCH_NAME
