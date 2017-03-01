@@ -46,7 +46,8 @@ node {
         stage('Send to Veracode'){
             echo 'Send to Veracode...'
             echo 'Naming branch...'
-            echo $BRANCH_NAME
+            echo $BUILD_ID
+            echo $env.BUILD_ID
             // echo 'Setting name of file'
             // sh '''
 
@@ -60,7 +61,7 @@ node {
 
             // '''
 
-            echo $FILENAME
+            
 
 
 
