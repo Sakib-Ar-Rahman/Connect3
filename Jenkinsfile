@@ -56,6 +56,7 @@ node {
             commit_message=$(git log -n 1 --pretty=%s)
 
             #search for the scan keyword within the commit message
+            echo $commit_message
 
             if echo "$commit_message" | grep -q "Scan=True"
             then
