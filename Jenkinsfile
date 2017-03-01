@@ -63,10 +63,10 @@ node {
                 echo "True" > scan.txt
             else
                 echo "No Scan requested, will not upload to veracode"
-                echo "False" > scan.txt
+                echo "True" > scan.txt
             fi
 
-
+            #File name changes
             for FILENAME in tictactoe/*.apk
                 do PATHNAME=tictactoe/
                 FILEPATHNAME=$FILENAME"_"$BRANCH_NAME
