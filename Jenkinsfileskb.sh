@@ -37,8 +37,7 @@ node {
         stage('Deploy') {
             echo 'Deploying....'
             echo 'some more changes'
-            echo $env.BUILD_NUMBER
-            echo $env.BRANCH_NAME
+    
         }
 
 
