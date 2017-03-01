@@ -45,9 +45,11 @@ node {
             echo 'Naming branch...'
             echo 'Send to Veracode...'
             echo 'Setting name of file'
+
+            checkout scm
             
             sh '''
-            checkout scm
+
             if [ -z "$BRANCH_NAME" ]; then
                 BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
             fi
