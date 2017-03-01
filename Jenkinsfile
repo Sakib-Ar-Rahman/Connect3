@@ -82,8 +82,8 @@ node {
                     env.FILENAME = readFile 'output_file_name.txt'
                     echo env.FILENAME
 
-                    def file1 = new File('scan.txt')
-                    def lines = .readLines()
+                    // def file1 = new File('scan.txt')
+                    // def lines = .readLines()
                     
 
                     echo 'Reading Scan File'
