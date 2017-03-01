@@ -40,6 +40,8 @@ node {
 
 
         stage('Send to Veracode'){
+
+
             echo 'Veracode Scan Stage Starting'
             echo 'Naming the file'
             sh '''echo $BUILD_ID
@@ -62,7 +64,12 @@ node {
             script {
                     env.FILENAME = readFile 'output_file_name.txt'
                     echo env.FILENAME
-  
+            }
+
+            if (false){
+                echo 'False reached'
+            }else{
+                echo 'True reached'
             }
 
 
