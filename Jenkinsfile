@@ -91,7 +91,7 @@ node {
 
             }
             echo "${env.FLAG}"
-            def strTrue = "False"
+            def strTrue = "True"
             if (env.FLAG.contains(strTrue)){
                 echo 'True reached'
             }else{
