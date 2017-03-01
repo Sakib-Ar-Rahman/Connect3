@@ -82,10 +82,15 @@ node {
                     env.FILENAME = readFile 'output_file_name.txt'
                     echo env.FILENAME
 
+                    def file1 = new File('scan.txt')
+                    def lines = .readLines()
+                    
+
                     echo 'Reading Scan File'
                     env.FLAG = readFile 'scan.txt'
-                    echo readFile 'scan.txt'
+
             }
+            echo ${env.FLAG}
 
             if (false){
                 echo 'False reached'
