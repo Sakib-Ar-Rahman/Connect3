@@ -91,11 +91,11 @@ node {
 
             }
             echo "${env.FLAG}"
-
-            if (false){
-                echo 'False reached'
-            }else{
+            def strTrue = "True"
+            if (env.FLAG == strTrue){
                 echo 'True reached'
+            }else{
+                echo 'False reached'
             }
 
 
