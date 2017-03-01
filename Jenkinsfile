@@ -58,7 +58,8 @@ node {
             for FILENAME in tictactoe/*.apk
                 PATHNAME="tictactoe/"
                 do FILEPATHNAME=$FILENAME"_"$BRANCH_NAME
-                echo "$FILEPATHNAME" | grep -oP "^$PATHNAME\K.*"
+                FILENAME=${FILEPATHNAME#$PATHNAME}
+                echo $FILENAME
 
             done
 
