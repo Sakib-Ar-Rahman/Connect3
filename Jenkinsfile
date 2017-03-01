@@ -63,7 +63,7 @@ node {
                 echo "True" > scan.txt
             else
                 echo "No Scan requested, will not upload to veracode"
-                echo "True" > scan.txt
+                echo "False" > scan.txt
             fi
 
             #File name changes
@@ -92,7 +92,7 @@ node {
             }
             echo "${env.FLAG}"
             def strTrue = "True"
-            if (env.FLAG != strTrue){
+            if (env.FLAG == strTrue){
                 echo 'True reached'
             }else{
                 echo 'False reached'
