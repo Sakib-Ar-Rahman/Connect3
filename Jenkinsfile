@@ -61,7 +61,7 @@ node {
             echo 'Retrieving name from output file'
             script {
                     env.FILENAME = readFile 'output_file_name.txt'
-                    writeFile file: 'mock_console_output', text: 'env.FILENAME'
+                    echo env.FILENAME
   
             }
 
