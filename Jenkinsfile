@@ -50,6 +50,23 @@ node {
             if [ -z "$BRANCH_NAME" ]; then
                 BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
             fi
+
+            #get the commit message
+            #if developer did not request a scan then there is no need to do anything
+            commit_message=$(git log -n 1 --pretty=%s)
+
+            #search for the scan keyword within the commit message
+
+            if echo "$commit_message" | grep -q "Scan=True"
+            then
+                echo "Scan requested, uploading to veracode"
+                echo "True" > scan.txt
+            else
+                echo "No Scan requested, will not upload to veracode"
+                echo "False" > scan.txt
+            fi
+
+
             for FILENAME in tictactoe/*.apk
                 do PATHNAME=tictactoe/
                 FILEPATHNAME=$FILENAME"_"$BRANCH_NAME
@@ -64,6 +81,10 @@ node {
             script {
                     env.FILENAME = readFile 'output_file_name.txt'
                     echo env.FILENAME
+
+                    echo 'Reading Scan File'
+                    env.FLAG = readFile 'scan.txt'
+                    echo "Scan file output: " $env.FLAG
             }
 
             if (false){
