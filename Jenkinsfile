@@ -3,7 +3,7 @@
 stage 'Get_External_Shell_Scripts'
 node {
 
-    try{
+    // try{
         stage('Build') {
             
             echo 'Building....'
@@ -25,6 +25,7 @@ node {
             // ./gradlew assemble
 
             // '''
+        }
         
         stage('Test') {
         	echo 'Testing....'
@@ -71,13 +72,13 @@ node {
            
         }
 
-    }
+    // }
     
-    catch(e){
-      slackSend color: "FF0000", message: "JENKINS ALERT! - BUILD FAILURE '${env.JOB_NAME}  [${env.BUILD_NUMBER}]' \n ${env.BUILD_TIMESTAMP} \n ${env.BUILD_URL}"
-      currentBuild.result = "FAILED"
-      throw e
-    }
+    // catch(e){
+    //   slackSend color: "FF0000", message: "JENKINS ALERT! - BUILD FAILURE '${env.JOB_NAME}  [${env.BUILD_NUMBER}]' \n ${env.BUILD_TIMESTAMP} \n ${env.BUILD_URL}"
+    //   currentBuild.result = "FAILED"
+    //   throw e
+    // }
 
 }
 
