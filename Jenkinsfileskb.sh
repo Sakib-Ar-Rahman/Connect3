@@ -47,7 +47,7 @@ node {
             
             sh '''
             echo 'Existing Branch name'
-            echo ${env.BRANCH_NAME}
+            echo ${env.BUILD_ID}
 
             if [ -z "$BRANCH_NAME" ]; then
                 BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
