@@ -84,6 +84,7 @@ pipeline {
 						echo "Scan is a no go"
 					}
 				}
+				
 
 				echo "Content in the scan.txt"
 				echo "${env.TEXT}"
