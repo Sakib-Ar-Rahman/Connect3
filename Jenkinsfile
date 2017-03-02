@@ -36,6 +36,13 @@ pipeline {
 					#echo $BRANCH_NAME
 					#Check path
 					#File name changes
+
+					if [ -z "$BRANCH_NAME" ]; then
+			            BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+			            echo This is the branch name:
+			            echo $BRANCH_NAME
+			            echo "Branch name obtained above"
+			        fi
 		            for FILENAME in tictactoe/*.apk
 		                do PATHNAME=tictactoe/
 		                FILEPATHNAME=$FILENAME
