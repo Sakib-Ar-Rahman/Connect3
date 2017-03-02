@@ -54,7 +54,6 @@ pipeline {
 			        echo $BRANCH_NAME > output_branch_name.txt
 
 
-
 			        PATHNAME=tictactoe/
 		            for FILENAME in tictactoe/*.apk
 		                do
