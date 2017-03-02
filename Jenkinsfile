@@ -39,7 +39,8 @@ pipeline {
 					#Check path
 					#File name changes
 
-
+					echo Initial branch name:
+					echo $BRANCH_NAME
 
 					if [ -z "$BRANCH_NAME" ]; then
 			            BRANCH_NAME_FULL=$(git name-rev --name-only HEAD)
@@ -70,7 +71,7 @@ pipeline {
 					'''
 				
 				// save the apk file name in an environment variable
-				script {
+				script {					
 					env.FILENAME = readFile 'output_file_name.txt'
 					env.TEXT = readFile 'scan.txt'
 					env.BRANCH_NAME = readFile 'output_branch_name.txt'
