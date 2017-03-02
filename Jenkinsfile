@@ -77,15 +77,17 @@ pipeline {
 					env.TEXT = readFile 'scan.txt'
 					env.BRANCH_NAME = readFile 'output_branch_name.txt'
 
+
+
 					if (env.TEXT.contains("True")) {
 						echo "Ready to scan!"
-						veracode applicationName: 'UGO - UGO Digital Wallet - Android', createProfile: false, createSandbox: true, criticality: 'VeryHigh', fileNamePattern: '', pHost: '', pPassword: '', pUser: '', replacementPattern: '', sandboxName: 'Sandbox Testing Sakib3', scanExcludesPattern: '', scanIncludesPattern: '', scanName: '${env.BRANCH_NAME} ${env.FILENAME} $timestamp', uploadExcludesPattern: '', uploadIncludesPattern: '**/**.jar', useIDkey: true, vid: 'bff67dd63d41f4331068e44ae216bbe4', vkey: 'e78160940b40a58ec04001889062e577007516ae8387e684ed2b99a8bba6bdc07a2366f8d127fd51b59bb52848ca6c19c835a99741507a002a76fda1191f5153', vpassword: '', vuser: ''
+						veracode applicationName: 'UGO - UGO Digital Wallet - Android', createProfile: false, createSandbox: true, criticality: 'VeryHigh', fileNamePattern: '', pHost: '', pPassword: '', pUser: '', replacementPattern: '', sandboxName: 'Sandbox Testing Sakib3', scanExcludesPattern: '', scanIncludesPattern: '', scanName: "${env.FILENAME}_${env.BRANCH_NAME}_'$timestamp'", uploadExcludesPattern: '', uploadIncludesPattern: '**/**.jar', useIDkey: true, vid: 'bff67dd63d41f4331068e44ae216bbe4', vkey: 'e78160940b40a58ec04001889062e577007516ae8387e684ed2b99a8bba6bdc07a2366f8d127fd51b59bb52848ca6c19c835a99741507a002a76fda1191f5153', vpassword: '', vuser: ''
 					} else {
 						echo "Scan is a no go"
 					}
 				}
 
-				
+
 
 				echo "Content in the scan.txt"
 				echo "${env.TEXT}"
