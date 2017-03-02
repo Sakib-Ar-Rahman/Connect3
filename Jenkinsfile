@@ -82,7 +82,6 @@ pipeline {
 				echo "Content in the scan.txt"
 				echo "${env.TEXT}"
 				
-				
 				sh '''
 					rm output_file_name.txt
 					rm scan.txt
