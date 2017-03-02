@@ -35,14 +35,15 @@ pipeline {
 					#echo $BUILD_NUMBER
 					#echo $BRANCH_NAME
 					#Check path
-					for FILENAME in "tictactoe/*.apk"
-						do PATHNAME=tictactoe/
-						FILEPATHNAME=$FILENAME"_"$BRANCH_NAME
-               			FILENAME=${FILEPATHNAME#$PATHNAME}
+					#File name changes
+		            for FILENAME in tictactoe/*.apk
+		                do PATHNAME=tictactoe/
+		                FILEPATHNAME=$FILENAME"_"$BRANCH_NAME
+		                FILENAME=${FILEPATHNAME#$PATHNAME}
 		                echo $FILENAME
-		                echo Saving the following name in an output file
+		                echo Saving name in an output file
 		                echo $FILENAME > output_file_name.txt
-					done
+		            done
 					'''
 
 
