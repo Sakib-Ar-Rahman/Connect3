@@ -40,7 +40,7 @@ pipeline {
 					#File name changes
 
 					if [ -z "$BRANCH_NAME" ]; then
-			            BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+			            BRANCH_NAME=$(git branch | grep \* | cut -d ' ' -f2-)
 			            echo This is the branch name:
 			            echo $BRANCH_NAME
 			            echo "Branch name obtained above"
