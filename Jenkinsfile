@@ -7,7 +7,7 @@ node {
         stage('Build') {
             
             echo 'Building....'
-		    
+            
             // sh '''
             // echo 'Checking out gradle wrapper'
             // # cd tictactoe
@@ -26,7 +26,7 @@ node {
         }
         
         stage('Test') {
-        	echo 'Testing....'
+            echo 'Testing....'
 
         }
         stage('Deploy') {
@@ -49,26 +49,18 @@ node {
             fi
 
 
-
-            echo "Checking commit messages to find flag"
-
-            #get the commit message
-            #if developer did not request a scan then there is no need to do anything
-            commit_message=$(git log -n 1 --pretty=%s)
-
-
-
-            #search for the scan keyword within the commit message
-            echo $commit_message
-
-            if echo "$commit_message" | grep -q "Scan=True"
-            then
-                echo "Scan requested, uploading to veracode"
-                echo "True" > scan.txt
-            else
-                echo "No Scan requested, will not upload to veracode"
-                echo "False" > scan.txt
-            fi
+#get the commit message
+                    #if developer did not request a scan then there is no need to do anything
+                    commit_message=$(git log -n 1 --pretty=%s)
+                    #search for the scan keyword within the commit message
+                    if echo "$commit_message" | grep -q "Scan=True"
+                    then
+                        echo "Scan requested, uploading to veracode"
+                        echo "True" > scan.txt
+                    else
+                        echo "No Scan requested, will not upload to veracode"
+                        echo "False" > scan.txt
+                    fi
 
 
 
