@@ -69,7 +69,7 @@ pipeline {
 				script {
 					env.FILENAME = readFile 'output_file_name.txt'
 					env.TEXT = readFile 'scan.txt'
-					env.BRANCH_NAME = readFile 'output_file_name.txt'
+					env.BRANCH_NAME = readFile 'output_branch_name.txt'
 
 					if (env.TEXT.contains("True")) {
 						echo "Ready to scan!"
