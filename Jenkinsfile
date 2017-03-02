@@ -33,8 +33,7 @@ node {
         }
         stage('Deploy') {
             echo 'Deploying....'
-            echo 'some more changes'
-
+            echo 'Will be sending to Hockey App'
 
         }
 
@@ -51,9 +50,15 @@ node {
                 BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
             fi
 
+
+
+            echo "Checking commit messages to find flag"
+
             #get the commit message
             #if developer did not request a scan then there is no need to do anything
             commit_message=$(git log -n 1 --pretty=%s)
+
+
 
             #search for the scan keyword within the commit message
             echo $commit_message
@@ -66,6 +71,8 @@ node {
                 echo "No Scan requested, will not upload to veracode"
                 echo "False" > scan.txt
             fi
+
+
 
             #File name changes
             for FILENAME in tictactoe/*.apk
@@ -94,13 +101,14 @@ node {
             echo "${env.FLAG}"
             if (env.FLAG.contains("True")){
                 echo 'True reached'
+                // veracode applicationName: 'UGO - UGO Digital Wallet - Android', createSandbox: true, criticality: 'VeryHigh', fileNamePattern: '', pHost: '', pPassword: '', pUser: '', replacementPattern: '', sandboxName: 'Sandbox Testing Sakib', scanExcludesPattern: '', scanIncludesPattern: '', scanName: 'env.FILENAME-Build-$buildnumber-Time-$timestamp', uploadExcludesPattern: '', uploadIncludesPattern: '**/**.jar, **/**.apk', useIDkey: true, vid: '19705c94f457345b9b9a809015525fcb', vkey: '7dd5d6f7c35d9cab66eaf4ee40c93a0ebf26b60ba505fadedf78c64452cd7d914ddd4e231e098a2bf64f70244750a62c58c3318bc5f5226186dd71fcedda4620', vpassword: '', vuser: ''
+           
             }else{
                 echo 'False reached'
             }
 
 
-            // veracode applicationName: 'UGO - UGO Digital Wallet - Android', createSandbox: true, criticality: 'VeryHigh', fileNamePattern: '', pHost: '', pPassword: '', pUser: '', replacementPattern: '', sandboxName: 'Sandbox Testing Sakib', scanExcludesPattern: '', scanIncludesPattern: '', scanName: '$NEWFILENAME-Build-$buildnumber-Time-$timestamp', uploadExcludesPattern: '', uploadIncludesPattern: '**/**.jar, **/**.apk', useIDkey: true, vid: '19705c94f457345b9b9a809015525fcb', vkey: '7dd5d6f7c35d9cab66eaf4ee40c93a0ebf26b60ba505fadedf78c64452cd7d914ddd4e231e098a2bf64f70244750a62c58c3318bc5f5226186dd71fcedda4620', vpassword: '', vuser: ''
-           
+            
         }
 
     // }
