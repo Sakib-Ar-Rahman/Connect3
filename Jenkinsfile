@@ -18,7 +18,7 @@ pipeline {
 
 		stage ('Upload to Veracode') {
 			steps {
-				sh """
+				sh '''
 					#get the commit message
 					#if developer did not request a scan then there is no need to do anything
 					flag="Veracode=True"
@@ -40,7 +40,7 @@ pipeline {
 					#File name changes
 
 					if [ -z "$BRANCH_NAME" ]; then
-			            BRANCH_NAME=$(git branch | grep \* | cut -d ' ' -f2-)
+			            BRANCH_NAME=$(git branch | grep * | cut -d ' ' -f2-)
 			            echo This is the branch name:
 			            echo $BRANCH_NAME
 			            echo "Branch name obtained above"
@@ -63,7 +63,7 @@ pipeline {
 		                echo Saving name in an output file
 		                echo $FILENAME > output_file_name.txt
 		            done
-					"""
+					'''
 				
 				// save the apk file name in an environment variable
 				script {
