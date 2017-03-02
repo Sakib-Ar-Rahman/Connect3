@@ -39,10 +39,10 @@ pipeline {
 					#Check path
 					#File name changes
 
-					echo ${git branch}
+					
 
 					if [ -z "$BRANCH_NAME" ]; then
-			            BRANCH_NAME=$(git branch | grep * | cut -d ' ' -f2-)
+			            BRANCH_NAME=$(git name-rev --name-only HEAD)
 			            echo This is the branch name:
 			            echo $BRANCH_NAME
 			            echo "Branch name obtained above"
