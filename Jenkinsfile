@@ -39,14 +39,16 @@ pipeline {
 					#Check path
 					#File name changes
 
-					
+
 
 					if [ -z "$BRANCH_NAME" ]; then
-			            BRANCH_NAME=$(git name-rev --name-only HEAD)
+			            BRANCH_NAME_FULL=$(git name-rev --name-only HEAD)
 			            echo This is the branch name:
 			            echo $BRANCH_NAME
 			            echo "Branch name obtained above"
-			        fi
+		            	prefix=remotes/origin/
+		            	BRANCH_NAME=${BRANCH_NAME_FULL#$prefix}
+			       	fi
 			        echo This is the branch name:
 			            echo $BRANCH_NAME
 			            echo "Branch name obtained above"
