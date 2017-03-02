@@ -40,7 +40,7 @@ pipeline {
 					#File name changes
 
 					if [ -z "$BRANCH_NAME" ]; then
-			            BRANCH_NAME=$(git symbolic-ref --short HEAD)
+			            BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
 			            echo This is the branch name:
 			            echo $BRANCH_NAME
 			            echo "Branch name obtained above"
@@ -65,7 +65,7 @@ pipeline {
 		                echo $FILENAME > output_file_name.txt
 		            done
 					'''
-					
+				
 				// save the apk file name in an environment variable
 				script {
 					env.FILENAME = readFile 'output_file_name.txt'
