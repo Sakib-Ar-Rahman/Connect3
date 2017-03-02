@@ -65,8 +65,7 @@ pipeline {
 		                echo $FILENAME > output_file_name.txt
 		            done
 					'''
-
-v
+					
 				// save the apk file name in an environment variable
 				script {
 					env.FILENAME = readFile 'output_file_name.txt'
