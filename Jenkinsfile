@@ -43,6 +43,7 @@ pipeline {
 					echo $BRANCH_NAME
 
 					if [ -z "$BRANCH_NAME" ]; then
+						echo About to parse branch name
 			            BRANCH_NAME_FULL=$(git name-rev --name-only HEAD)
 			            echo This is the branch name:
 			            echo $BRANCH_NAME
