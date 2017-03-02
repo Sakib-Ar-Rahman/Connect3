@@ -10,8 +10,8 @@ pipeline {
 			steps {
 				sh '''
 					echo building...
-					./gradlew clean
-					./gradlew build
+					#./gradlew clean
+					#./gradlew build
 				'''
 			}
 		} 
@@ -38,7 +38,7 @@ pipeline {
 					#File name changes
 		            for FILENAME in tictactoe/*.apk
 		                do PATHNAME=tictactoe/
-		                FILEPATHNAME=$FILENAME"_"$BRANCH_NAME
+		                FILEPATHNAME=$FILENAME
 		                FILENAME=${FILEPATHNAME#$PATHNAME}
 		                echo $FILENAME
 		                echo Saving name in an output file
