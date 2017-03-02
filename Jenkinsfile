@@ -7,9 +7,7 @@ node {
         stage('Build') {
             
             echo 'Building....'
-		
-// Delete later
-            
+		    
             // sh '''
             // echo 'Checking out gradle wrapper'
             // # cd tictactoe
@@ -93,7 +91,6 @@ node {
                     // def file1 = new File('scan.txt')
                     // def lines = .readLines()
                     
-
                     echo 'Reading Scan File'
                     env.FLAG = readFile 'scan.txt'
 
