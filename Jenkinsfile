@@ -79,6 +79,7 @@ pipeline {
 					env.FILENAME = readFile 'output_file_name.txt'
 					env.TEXT = readFile 'scan.txt'
 					env.BRANCH_NAME = readFile 'output_branch_name.txt'
+					echo env.timestamp
 
 
 
