@@ -73,8 +73,8 @@ pipeline {
 		                echo $FILENAME > output_file_name.txt
 		            done
 					'''
-					echo outside bash and script timestamp
-					echo $env.timestamp
+					echo 'outside bash and script timestamp'
+					echo "$env.timestamp"
 				
 				// save the apk file name in an environment variable
 				script {					
