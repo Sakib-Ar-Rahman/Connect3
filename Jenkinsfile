@@ -42,6 +42,9 @@ pipeline {
 					echo Initial branch name:
 					echo $BRANCH_NAME
 
+					echo Timestamp:
+					echo $timestamp
+
 					if [ -z "$BRANCH_NAME" ]; then
 						echo About to parse branch name
 			            BRANCH_NAME_FULL=$(git name-rev --name-only HEAD)
