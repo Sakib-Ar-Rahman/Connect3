@@ -31,6 +31,7 @@ pipeline {
                     else
                         echo "No Scan requested, will not upload to veracode"
                         echo "False" > scan.txt
+                    fi
                          
                     '''
   
