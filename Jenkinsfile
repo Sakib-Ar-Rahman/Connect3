@@ -45,49 +45,53 @@ pipeline {
 					echo Timestamp:
 					echo $timestamp
 
-					if [ -z "$BRANCH_NAME" ]; then
-						echo About to parse branch name
-			            BRANCH_NAME_FULL=$(git name-rev --name-only HEAD)
-			            echo This is the branch name:
-			            echo $BRANCH_NAME
-			            echo "Branch name obtained above"
-		            	prefix=remotes/origin/
-		            	BRANCH_NAME=${BRANCH_NAME_FULL#$prefix}
-			       	fi
-			        echo This is the branch name:
-			            echo $BRANCH_NAME
-			            echo "Branch name obtained above"
 
-			        #Saving branch name in an output file
-			        echo Saving branch name in an output file
-			        echo $BRANCH_NAME > output_branch_name.txt
+				# # The following piece of code saves the branch name and the apk file name and then uses this information to name the scan,
+				# # Since Veracode suggests using the same name for the scan, this is comented output
+
+					# if [ -z "$BRANCH_NAME" ]; then
+					# 	echo About to parse branch name
+			  #           BRANCH_NAME_FULL=$(git name-rev --name-only HEAD)
+			  #           echo This is the branch name:
+			  #           echo $BRANCH_NAME
+			  #           echo "Branch name obtained above"
+		   #          	prefix=remotes/origin/
+		   #          	BRANCH_NAME=${BRANCH_NAME_FULL#$prefix}
+			  #      	fi
+			  #       echo This is the branch name:
+			  #           echo $BRANCH_NAME
+			  #           echo "Branch name obtained above"
+
+			  #       #Saving branch name in an output file
+			  #       echo Saving branch name in an output file
+			  #       echo $BRANCH_NAME > output_branch_name.txt
 
 
-			        PATHNAME=tictactoe/
-		            for FILENAME in tictactoe/*.apk
-		                do
-		                FILEPATHNAME=$FILENAME
-		                FILENAME=${FILEPATHNAME#$PATHNAME}
-		                echo $FILENAME
-		                echo Saving name in an output file
-		                echo $FILENAME > output_file_name.txt
-		            done
+			        # PATHNAME=tictactoe/
+		         #    for FILENAME in tictactoe/*.apk
+		         #        do
+		         #        FILEPATHNAME=$FILENAME
+		         #        FILENAME=${FILEPATHNAME#$PATHNAME}
+		         #        echo $FILENAME
+		         #        echo Saving name in an output file
+		         #        echo $FILENAME > output_file_name.txt
+		         #    done
 					'''
-					echo 'outside bash and script timestamp'
-					echo "$env.timestamp"
+				//	echo 'outside bash and script timestamp'
+				//	echo "$env.timestamp"
 				
 				// save the apk file name in an environment variable
-				script {					
-					env.FILENAME = readFile 'output_file_name.txt'
+				//script {					
+				//	env.FILENAME = readFile 'output_file_name.txt'
 					env.TEXT = readFile 'scan.txt'
-					env.BRANCH_NAME = readFile 'output_branch_name.txt'
-					echo env.timestamp
+				//	env.BRANCH_NAME = readFile 'output_branch_name.txt'
+				//	echo env.timestamp
 
 
 
 					if (env.TEXT.contains("True")) {
 						echo "Ready to scan!"
-						veracode applicationName: 'UGO - UGO Digital Wallet - Android', createProfile: false, createSandbox: true, criticality: 'VeryHigh', fileNamePattern: '', pHost: '', pPassword: '', pUser: '', replacementPattern: '', sandboxName: 'Sandbox Testing Sakib3', scanExcludesPattern: '', scanIncludesPattern: '', scanName: "${env.FILENAME}_${env.BRANCH_NAME}", uploadExcludesPattern: '', uploadIncludesPattern: '**/**.jar', useIDkey: true, vid: 'bff67dd63d41f4331068e44ae216bbe4', vkey: 'e78160940b40a58ec04001889062e577007516ae8387e684ed2b99a8bba6bdc07a2366f8d127fd51b59bb52848ca6c19c835a99741507a002a76fda1191f5153', vpassword: '', vuser: ''
+						veracode applicationName: 'UGO - UGO Digital Wallet - Android', createProfile: false, createSandbox: true, criticality: 'VeryHigh', fileNamePattern: '', pHost: '', pPassword: '', pUser: '', replacementPattern: '', sandboxName: 'Sandbox Testing Sakib3', scanExcludesPattern: '', scanIncludesPattern: '', scanName: "SomeName", uploadExcludesPattern: '', uploadIncludesPattern: '**/**.jar', useIDkey: true, vid: 'bff67dd63d41f4331068e44ae216bbe4', vkey: 'e78160940b40a58ec04001889062e577007516ae8387e684ed2b99a8bba6bdc07a2366f8d127fd51b59bb52848ca6c19c835a99741507a002a76fda1191f5153', vpassword: '', vuser: ''
 					} else {
 						echo "Scan is a no go"
 					}
@@ -99,12 +103,16 @@ pipeline {
 				echo "${env.TEXT}"
 				
 				sh '''
-					rm output_file_name.txt
 					rm scan.txt
 				'''
 			}
-			//saas
+			
 
+		}
+		stage ('New Stage') {
+			steps {
+				echo "New Stage Started"
+			}
 		}
 	}
 }
