@@ -14,7 +14,7 @@ pipeline {
                 '''
             }
         }
-        stage ('Upload to Veracode') {
+        stage ('UploadtoVeracode') {
             steps {
                 sh '''
                     #get the commit message
@@ -56,11 +56,11 @@ pipeline {
                     rm scan.txt
                 '''
             }
+        }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
             }
         }
     }
-}
 }
